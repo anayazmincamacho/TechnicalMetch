@@ -19,6 +19,7 @@ export class AppComponent implements OnInit{
   title = 'Farms';
 FarmsList : any[]= [];
 ListFiltered : any[]= [];
+FilterData : any[]= [];
 Filterby : any[]= [{value : 100, name : 'No'},
 {value : 2020, name : 'Active Date'}]
 list: Object = { text: 'Name', value: 'id' };
@@ -41,10 +42,19 @@ placeholder_filter = "Filter by"
         "No": msj[i].no,
         "Name" : msj[i].name,
         "Address": msj[i].address,
-        "Active Date" : this.datepipe.transform(msj[i].activeDate,'dd/MM/YYYY')
+        "ActiveDate" : this.datepipe.transform(msj[i].activeDate,'dd/MM/YYYY'),
+      });
+      this.FilterData.push({
+        "id": msj[i].id,
+        "No": msj[i].no,
+        "Name" : msj[i].name,
+        "Address": msj[i].address,
+        "ActiveDate" : this.datepipe.transform(msj[i].activeDate,'dd/MM/YYYY'),
+        "Year": this.datepipe.transform(msj[i].activeDate,'YYYY'),
+        "Nopart": msj[i].no.substring(0,3)
       })
     }
-    console.log(this.FarmsList)
+    console.log(this.FilterData)
   }
 
   changeSelect(e : any): void
@@ -52,7 +62,6 @@ placeholder_filter = "Filter by"
     let id = e.value
     this.ListFiltered.splice(0,1)    
     let r = this.FarmsList.filter((f : any)=> f.id == id);
-      r[0].acct
       this.ListFiltered.push(r[0]);
       console.log(this.ListFiltered);
       this.grid.refresh();
@@ -77,7 +86,26 @@ catchException(a : any)
 
 getFilter(e : any)
 {
-  console.log(e.value);   
+  console.log(e.value); 
+  this.ListFiltered.splice(0,1) ;
+  if (e.value == 2020)
+  {
+       
+    let r = this.FilterData.filter((f : any)=> f.Year == 2020);
+    let m = this.FarmsList.filter((f : any)=> f.id == r[0].id);
+    console.log(m);
+      this.ListFiltered.push(m[0]);
+      this.grid.refresh()
+  }
+  if(e.value == 100)
+  {
+    let r = this.FilterData.filter((f : any)=> f.Nopart == 100);
+    let m = this.FarmsList.filter((f : any)=> f.id == r[0].id);
+    console.log(m);
+      this.ListFiltered.push(m[0]);
+      this.grid.refresh()
+  }
+
 }
 
   ngOnInit(): void {
