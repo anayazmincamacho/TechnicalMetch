@@ -20,8 +20,11 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@syncfusion/ej2-angular-buttons": "^20.1.55",
     "@syncfusion/ej2-angular-dropdowns": "^20.1.58",
     "@syncfusion/ej2-angular-grids": "^20.1.58",
+    "@syncfusion/ej2-layouts": "^20.1.58",
+    "ngp-date-pipe": "^0.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

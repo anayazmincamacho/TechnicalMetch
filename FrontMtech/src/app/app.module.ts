@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropDownListModule } from "@syncfusion/ej2-angular-dropdowns";
 import { GridModule } from '@syncfusion/ej2-angular-grids';
+import { MaterialModule } from './material.module';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent
@@ -15,9 +18,10 @@ import { GridModule } from '@syncfusion/ej2-angular-grids';
     AppRoutingModule,
     BrowserAnimationsModule,
     DropDownListModule,
-    GridModule
+    GridModule,MaterialModule,MatGridListModule
+
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

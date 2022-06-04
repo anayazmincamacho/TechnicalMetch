@@ -2,8 +2,22 @@
 
   <h2>{{title}}</h2>
   
-     <ejs-dropdownlist id='Farms' #local [dataSource]='FarmsList' [fields]='list' [placeholder]='placeholder_dropdwn' class="dropdown" (change)="changeSelect($event)" ></ejs-dropdownlist> 
+    
      <section>
-         <ejs-grid #grid [dataSource]="data" [gridLines]="lines" allowPaging="true" class="table" ></ejs-grid>
+       <mat-grid-list cols="3" rowHeight="2:1">
+        <mat-grid-tile>
+          <ejs-dropdownlist id='Farms' #local [dataSource]='FarmsList' [fields]='list' [placeholder]='placeholder_dropdwn' class="dropdown" (change)="changeSelect($event)" ></ejs-dropdownlist> 
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <ejs-dropdownlist id='Farms' #filter [dataSource]='Filterby' [fields]='listFilterdby' [placeholder]='placeholder_filter' class="dropdown"  (change)="getFilter($event)"></ejs-dropdownlist> 
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-raised-button color="warn" (click)="catchException(2)">Exception</button>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="3">
+          <ejs-grid #grid [dataSource]="data" [gridLines]="lines" allowPaging="true" class="table" ></ejs-grid>
+        </mat-grid-tile>
+       </mat-grid-list>
+        
      </section>
   </section>
